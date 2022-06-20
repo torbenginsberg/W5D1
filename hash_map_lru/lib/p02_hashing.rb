@@ -4,11 +4,23 @@ end
 
 class Array
   def hash
+    curr_xor = 0
+    self.each_with_index do |ele, idx|
+      temp = ele.object_id + idx
+      curr_xor = curr_xor ^ temp
+    end
+    curr_xor.hash
   end
 end
 
 class String
   def hash
+    curr_xor = 0
+    chars.each_with_index do |char, idx|
+      temp = char.object_id + idx
+      curr_xor = curr_xor ^ temp
+    end
+    curr_xor.hash
   end
 end
 
